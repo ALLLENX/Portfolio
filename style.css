@@ -82,6 +82,7 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 120px 40px;
 }
+.section.compact { padding-top: 20px; }
 .section-head { margin-bottom: 60px; max-width: 720px; }
 .kicker {
   display: inline-block;
@@ -186,6 +187,7 @@ img { max-width: 100%; display: block; }
 .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; }
 .about-text p { color: var(--muted); font-size: 17px; margin-bottom: 16px; }
 .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.highlight-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .info-card {
   padding: 22px; background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius); transition: transform .25s, border-color .25s;
@@ -352,11 +354,15 @@ img { max-width: 100%; display: block; }
   .hero { grid-template-columns: 1fr; padding: 110px 20px 60px; }
   .section { padding: 80px 20px; }
   .about-grid, .skills-grid { grid-template-columns: 1fr; }
-  .about-cards { grid-template-columns: 1fr 1fr; }
+  .about-cards, .highlight-grid { grid-template-columns: 1fr 1fr; }
   .project, .project.reverse { grid-template-columns: 1fr; }
   .project.reverse .project-visual { order: 0; }
   .hero-stats { gap: 24px; }
   .hero-stats strong { font-size: 26px; }
+}
+
+@media (max-width: 560px) {
+  .about-cards, .highlight-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
