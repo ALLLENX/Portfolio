@@ -92,6 +92,25 @@ document.querySelectorAll('.skill-card').forEach(card => {
   });
 });
 
+// ---------- Copy email ----------
+const copyEmail = document.getElementById('copyEmail');
+const copyStatus = document.getElementById('copyStatus');
+copyEmail?.addEventListener('click', async () => {
+  const email = copyEmail.dataset.email;
+  if (!email) return;
+
+  try {
+    await navigator.clipboard.writeText(email);
+    if (copyStatus) copyStatus.textContent = 'Email copied';
+  } catch {
+    if (copyStatus) copyStatus.textContent = email;
+  }
+
+  window.setTimeout(() => {
+    if (copyStatus) copyStatus.textContent = 'One-click email copy';
+  }, 2200);
+});
+
 // ---------- Smooth active link ----------
 const sections = document.querySelectorAll('section[id], header[id]');
 const navAs = document.querySelectorAll('.nav-links a');

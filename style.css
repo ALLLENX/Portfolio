@@ -402,8 +402,10 @@ img { max-width: 100%; display: block; }
   padding: 28px; background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius);
   display: flex; flex-direction: column; gap: 6px;
+  text-align: left;
   transition: transform .3s, border-color .3s, background .3s;
 }
+.copy-card { color: var(--text); font: inherit; cursor: pointer; }
 .contact-card:hover {
   transform: translateY(-6px);
   border-color: rgba(124,92,255,0.5);
