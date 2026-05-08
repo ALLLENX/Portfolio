@@ -180,6 +180,27 @@ img { max-width: 100%; display: block; }
 }
 .hero-stats span { color: var(--muted); font-size: 13px; }
 
+/* ---------- Recruiter snapshot ---------- */
+.recruiter-strip {
+  max-width: var(--maxw); margin: -28px auto 0; padding: 22px 40px;
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr auto; gap: 22px; align-items: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.strip-label {
+  display: block; font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--primary-2); margin-bottom: 4px;
+}
+.recruiter-strip strong { font-size: 15px; font-weight: 600; }
+.strip-actions { display: flex; gap: 10px; justify-content: flex-end; }
+.mini-link {
+  padding: 9px 14px; border-radius: 999px; border: 1px solid var(--border);
+  color: var(--text); background: rgba(255,255,255,0.04); font-size: 13px;
+  transition: transform .25s, background .25s, border-color .25s;
+}
+.mini-link:hover { transform: translateY(-2px); background: rgba(124,92,255,0.12); border-color: rgba(124,92,255,0.45); }
+
 /* Code window */
 .hero-card { perspective: 1000px; }
 .code-window {
@@ -381,6 +402,8 @@ img { max-width: 100%; display: block; }
   .nav-links.open { transform: none; }
   .nav-toggle { display: flex; }
   .hero { grid-template-columns: 1fr; padding: 110px 20px 60px; }
+  .recruiter-strip { grid-template-columns: 1fr 1fr; margin: 0 20px; padding: 20px; }
+  .strip-actions { justify-content: flex-start; }
   .section { padding: 80px 20px; }
   .about-grid, .skills-grid { grid-template-columns: 1fr; }
   .about-cards, .highlight-grid { grid-template-columns: 1fr 1fr; }
@@ -392,6 +415,8 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 560px) {
   .about-cards, .highlight-grid { grid-template-columns: 1fr; }
+  .recruiter-strip { grid-template-columns: 1fr; }
+  .strip-actions { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {
