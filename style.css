@@ -15,6 +15,20 @@
   --maxw: 1200px;
 }
 
+:root[data-theme="light"] {
+  --bg: #f7f8fb;
+  --bg-elev: #ffffff;
+  --surface: rgba(10,20,35,0.055);
+  --border: rgba(10,20,35,0.12);
+  --text: #111827;
+  --muted: #5b6475;
+  --primary: #6d5dfc;
+  --primary-2: #0891b2;
+  --accent: #be185d;
+  --grad: linear-gradient(135deg, #6d5dfc 0%, #0891b2 52%, #be185d 100%);
+  --shadow: 0 20px 60px -24px rgba(8,145,178,0.35);
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -42,6 +56,12 @@ img { max-width: 100%; display: block; }
   filter: blur(120px); opacity: 0.5; pointer-events: none;
   animation: float 18s ease-in-out infinite;
 }
+:root[data-theme="light"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(10,20,35,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,20,35,0.055) 1px, transparent 1px);
+}
+:root[data-theme="light"] .nav { background: rgba(247,248,251,0.78); }
 .glow-1 { width: 500px; height: 500px; background: #7c5cff; top: -150px; left: -150px; }
 .glow-2 { width: 600px; height: 600px; background: #22d3ee; bottom: -200px; right: -200px; animation-delay: -9s; }
 @keyframes float {
@@ -73,6 +93,15 @@ img { max-width: 100%; display: block; }
   width: 0; height: 2px; background: var(--grad); transition: width .3s;
 }
 .nav-links a:hover::after { width: 100%; }
+.nav-actions { display: flex; align-items: center; gap: 14px; }
+.theme-toggle {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: transform .25s, background .25s, border-color .25s;
+}
+.theme-toggle:hover { transform: translateY(-2px); border-color: rgba(124,92,255,0.45); }
+.theme-icon { font-size: 18px; line-height: 1; }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
 .nav-toggle span { width: 24px; height: 2px; background: var(--text); transition: .3s; }
 

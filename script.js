@@ -2,6 +2,30 @@
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
+// ---------- Theme toggle ----------
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle?.querySelector('.theme-icon');
+const savedTheme = localStorage.getItem('theme');
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+const initialTheme = savedTheme || (prefersLight ? 'light' : 'dark');
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  if (!themeToggle || !themeIcon) return;
+
+  const isLight = theme === 'light';
+  themeToggle.setAttribute('aria-pressed', String(isLight));
+  themeToggle.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} theme`);
+  themeIcon.textContent = isLight ? '☀' : '☾';
+}
+
+setTheme(initialTheme);
+themeToggle?.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  localStorage.setItem('theme', nextTheme);
+  setTheme(nextTheme);
+});
+
 // ---------- Typewriter ----------
 const phrases = [
   'web experiences.',
