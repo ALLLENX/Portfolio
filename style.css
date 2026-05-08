@@ -272,10 +272,34 @@ img { max-width: 100%; display: block; }
 .chips span:hover { background: rgba(124,92,255,0.15); transform: translateY(-2px); }
 .chips.small span { padding: 5px 11px; font-size: 12px; }
 
+.case-study {
+  margin-top: 18px; border: 1px solid var(--border); border-radius: 14px;
+  background: rgba(255,255,255,0.03); overflow: hidden;
+}
+.case-study summary {
+  cursor: pointer; padding: 12px 14px; font-weight: 600; font-size: 14px;
+  color: var(--text);
+}
+.case-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  border-top: 1px solid var(--border); background: var(--border);
+}
+.case-grid p {
+  margin: 0; padding: 14px; background: var(--bg-elev);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.case-grid strong { font-size: 12px; color: var(--primary-2); text-transform: uppercase; letter-spacing: 0.06em; }
+.case-grid span { color: var(--muted); font-size: 13px; line-height: 1.5; }
+
 /* ---------- Projects ---------- */
 .projects { display: flex; flex-direction: column; gap: 80px; }
 .project {
   display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: center;
+}
+.project.featured {
+  padding: 34px; margin: -34px;
+  border: 1px solid rgba(34,211,238,0.28); border-radius: 28px;
+  background: linear-gradient(135deg, rgba(34,211,238,0.055), rgba(244,114,182,0.04));
 }
 .project.reverse { grid-template-columns: 1fr 1.3fr; }
 .project.reverse .project-visual { order: -1; }
@@ -408,7 +432,9 @@ img { max-width: 100%; display: block; }
   .about-grid, .skills-grid { grid-template-columns: 1fr; }
   .about-cards, .highlight-grid { grid-template-columns: 1fr 1fr; }
   .project, .project.reverse { grid-template-columns: 1fr; }
+  .project.featured { margin: 0; padding: 24px; }
   .project.reverse .project-visual { order: 0; }
+  .case-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 24px; }
   .hero-stats strong { font-size: 26px; }
 }
