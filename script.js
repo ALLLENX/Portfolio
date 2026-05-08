@@ -1,5 +1,6 @@
 // ---------- Year ----------
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
 
 // ---------- Typewriter ----------
 const phrases = [
@@ -11,6 +12,7 @@ const phrases = [
 const typed = document.getElementById('typed');
 let pi = 0, ci = 0, deleting = false;
 function tick() {
+  if (!typed) return;
   const word = phrases[pi];
   typed.textContent = word.slice(0, ci);
   if (!deleting && ci < word.length) { ci++; setTimeout(tick, 80); }
@@ -21,21 +23,30 @@ function tick() {
     setTimeout(tick, deleting ? 1400 : 200);
   }
 }
-tick();
+if (typed) tick();
 
 // ---------- Nav scroll state ----------
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
+  nav?.classList.toggle('scrolled', window.scrollY > 20);
 });
 
 // ---------- Mobile menu ----------
 const toggle = document.getElementById('navToggle');
 const links = document.querySelector('.nav-links');
-toggle.addEventListener('click', () => links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a =>
-  a.addEventListener('click', () => links.classList.remove('open'))
-);
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  links.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    })
+  );
+}
 
 // ---------- Reveal on scroll ----------
 const io = new IntersectionObserver(entries => {
